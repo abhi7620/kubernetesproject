@@ -1,8 +1,12 @@
-FROM centos:latest
+FROM ubuntu:latest
 MAINTAINER abhijeet.deshpande15@gmail.com
-RUN yum install -y httpd \ 
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get install -y apache2 \
     zip \
-	unzip
+        unzip
+RUN apt-get update
+RUN apt-get -y install apache2-utils
 ADD https://www.tooplate.com/zip-templates/2130_waso_strategy.zip /var/www/html
 WORKDIR /var/www/html
 RUN unzip 2130_waso_strategy.zip
